@@ -1,6 +1,6 @@
 /*
 
-Template: Digisailor
+Template: ReneChip
 Author: potenzaglobalsolutions
 Design and Developed by: digisailor
 
@@ -37,9 +37,9 @@ NOTE: This file contains all scripts for the actual Template.
   "use strict";
   var POTENZA = {};
 
-/*************************
-  Predefined Variables
-*************************/
+  /*************************
+    Predefined Variables
+  *************************/
   var $window = $(window),
     $document = $(document),
     $body = $('body'),
@@ -51,95 +51,95 @@ NOTE: This file contains all scripts for the actual Template.
   };
 
 
-/*************************
-         Sticky
-*************************/
-POTENZA.isSticky = function () {
-  $(window).on('scroll',function(event) {
-        var scroll = $(window).scrollTop();
-        if (scroll < 300) {
-            $(".header").removeClass("sticky-top");
-        }else{
-            $(".header").addClass("sticky-top");
-        }
-    });
-};
-
-/*************************
-    Secondary Sticky
-*************************/
-POTENZA.secondarySticky = function () {
-  $(window).on('scroll',function(event) {
-        var scroll = $(window).scrollTop();
-        if (scroll < 500) {
-            $(".header-inner-nav").removeClass("page-menu-top");
-        }else{
-            $(".header-inner-nav").addClass("page-menu-top");
-        }
-        console.log($('div').hasClass('header-inner-nav'));
-        if( $('div').hasClass('header-inner-nav') ) {
-          var div_height = 90 + $('.header-inner-nav').height();
-          $('.is-sticky').css('top',div_height);
-        } else{
-          $('.is-sticky').css('top','80px');
-        }
-    });
-
-	$( document ).on( 'click', '.header-inner-nav .nav-item a', function(){
-		$('.header-inner-nav .nav-item a').removeClass('active');
-		$(this).addClass('active');
-    });
-	$( document ).on( 'click', '.header-inner-nav .nav-item a', function(){
-        $('html, body').animate({
-            scrollTop: $( $(this).attr('href') ).offset().top-120
-        }, 1000);
-        return false;
-    });
-};
-
-/*************************
-    Menu
-*************************/
-POTENZA.dropdownmenu = function () {
-  if ($('.navbar').exists()) {
-    $('.dropdown-menu a.dropdown-toggle').on('click', function (e) {
-      if (!$(this).next().hasClass('show')) {
-        $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+  /*************************
+           Sticky
+  *************************/
+  POTENZA.isSticky = function () {
+    $(window).on('scroll', function (event) {
+      var scroll = $(window).scrollTop();
+      if (scroll < 300) {
+        $(".header").removeClass("sticky-top");
+      } else {
+        $(".header").addClass("sticky-top");
       }
-      var $subMenu = $(this).next(".dropdown-menu");
-      $subMenu.toggleClass('show');
-      $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function (e) {
-        $('.dropdown-submenu .show').removeClass("show");
-      });
+    });
+  };
+
+  /*************************
+      Secondary Sticky
+  *************************/
+  POTENZA.secondarySticky = function () {
+    $(window).on('scroll', function (event) {
+      var scroll = $(window).scrollTop();
+      if (scroll < 500) {
+        $(".header-inner-nav").removeClass("page-menu-top");
+      } else {
+        $(".header-inner-nav").addClass("page-menu-top");
+      }
+      console.log($('div').hasClass('header-inner-nav'));
+      if ($('div').hasClass('header-inner-nav')) {
+        var div_height = 90 + $('.header-inner-nav').height();
+        $('.is-sticky').css('top', div_height);
+      } else {
+        $('.is-sticky').css('top', '80px');
+      }
+    });
+
+    $(document).on('click', '.header-inner-nav .nav-item a', function () {
+      $('.header-inner-nav .nav-item a').removeClass('active');
+      $(this).addClass('active');
+    });
+    $(document).on('click', '.header-inner-nav .nav-item a', function () {
+      $('html, body').animate({
+        scrollTop: $($(this).attr('href')).offset().top - 120
+      }, 1000);
       return false;
     });
-  }
-};
+  };
+
+  /*************************
+      Menu
+  *************************/
+  POTENZA.dropdownmenu = function () {
+    if ($('.navbar').exists()) {
+      $('.dropdown-menu a.dropdown-toggle').on('click', function (e) {
+        if (!$(this).next().hasClass('show')) {
+          $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+        }
+        var $subMenu = $(this).next(".dropdown-menu");
+        $subMenu.toggleClass('show');
+        $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function (e) {
+          $('.dropdown-submenu .show').removeClass("show");
+        });
+        return false;
+      });
+    }
+  };
 
   /*************************
        Tooltip
   *************************/
-  POTENZA.Tooltip = function() {
+  POTENZA.Tooltip = function () {
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl)
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
     })
   }
 
   /*************************
         Popover
   *************************/
-  POTENZA.Popover = function() {
+  POTENZA.Popover = function () {
     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-      var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-        return new bootstrap.Popover(popoverTriggerEl)
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+      return new bootstrap.Popover(popoverTriggerEl)
     })
   }
 
 
-/*************************
-       Counter
-*************************/
+  /*************************
+         Counter
+  *************************/
   POTENZA.counters = function () {
     var counter = jQuery(".counter");
     if (counter.length > 0) {
@@ -152,9 +152,9 @@ POTENZA.dropdownmenu = function () {
     }
   };
 
-/*************************
-       Owl Carousel
-*************************/
+  /*************************
+         Owl Carousel
+  *************************/
   POTENZA.carousel = function () {
     var owlslider = jQuery("div.owl-carousel");
     if (owlslider.length > 0) {
@@ -264,9 +264,9 @@ POTENZA.dropdownmenu = function () {
     }
   }
 
-/*************************
-       Countdown
-*************************/
+  /*************************
+         Countdown
+  *************************/
   POTENZA.countdownTimer = function () {
     if ($countdownTimer.exists()) {
       $countdownTimer.downCount({
@@ -276,73 +276,73 @@ POTENZA.dropdownmenu = function () {
     }
   }
 
-/*************************
-   SwiperAnimation
-*************************/
-POTENZA.swiperAnimation = function () {
-  var siperslider = jQuery(".swiper-container");
-  if (siperslider.length > 0) {
-    var swiperAnimation = new SwiperAnimation();
-        var swiper = new Swiper(".swiper-container", {
-          init : true,
-          direction: "horizontal",
-          effect: "slide",
-          loop: true,
+  /*************************
+     SwiperAnimation
+  *************************/
+  POTENZA.swiperAnimation = function () {
+    var siperslider = jQuery(".swiper-container");
+    if (siperslider.length > 0) {
+      var swiperAnimation = new SwiperAnimation();
+      var swiper = new Swiper(".swiper-container", {
+        init: true,
+        direction: "horizontal",
+        effect: "slide",
+        loop: true,
 
-          keyboard: {
-            enabled: true,
-            onlyInViewport: true
+        keyboard: {
+          enabled: true,
+          onlyInViewport: true
+        },
+        // Navigation arrows
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        on: {
+          init: function () {
+            swiperAnimation.init(this).animate();
           },
-            // Navigation arrows
-            navigation: {
-              nextEl: '.swiper-button-next',
-              prevEl: '.swiper-button-prev',
-            },
-          on: {
-            init: function() {
-              swiperAnimation.init(this).animate();
-            },
-            slideChange: function() {
+          slideChange: function () {
 
-              swiperAnimation.init(this).animate();
-            }
+            swiperAnimation.init(this).animate();
           }
-        });
+        }
+      });
     }
   }
 
-/*************************
-       Typer
-*************************/
-POTENZA.typer = function () {
-  if ($('.typer').exists()) {
+  /*************************
+         Typer
+  *************************/
+  POTENZA.typer = function () {
+    if ($('.typer').exists()) {
     }
-};
+  };
 
-/*************************
-       Search
-*************************/
-POTENZA.searchbox = function () {
-   if (jQuery('.search').exists()) {
+  /*************************
+         Search
+  *************************/
+  POTENZA.searchbox = function () {
+    if (jQuery('.search').exists()) {
       jQuery('.search-btn').on('click', function () {
-         jQuery('.search').toggleClass("search-open");
-           return false;
-          });
-       jQuery("html, body").on('click', function (e) {
+        jQuery('.search').toggleClass("search-open");
+        return false;
+      });
+      jQuery("html, body").on('click', function (e) {
         if (!jQuery(e.target).hasClass("not-click")) {
 
-             jQuery('.search').removeClass("search-open");
-         }
-     });
+          jQuery('.search').removeClass("search-open");
+        }
+      });
     }
-}
+  }
 
-/*************************
-    Shuffle
-*************************/
-   POTENZA.shuffle = function () {
+  /*************************
+      Shuffle
+  *************************/
+  POTENZA.shuffle = function () {
     if (jQuery('.my-shuffle-container').exists()) {
-    var Shuffle = window.Shuffle;
+      var Shuffle = window.Shuffle;
       var element = document.querySelector('.my-shuffle-container');
       var sizer = element.querySelector('.my-sizer-element');
 
@@ -352,10 +352,10 @@ POTENZA.searchbox = function () {
         speed: 700,
         columnThreshold: 0
       });
-      jQuery(document).ready(function(){
-		jQuery( document ).on( 'click', '.btn-filter', function(){
+      jQuery(document).ready(function () {
+        jQuery(document).on('click', '.btn-filter', function () {
           var data_group = jQuery(this).attr('data-group');
-          if( data_group != 'all' ){
+          if (data_group != 'all') {
             shuffleInstance.filter([data_group]);
           } else {
             shuffleInstance.filter();
@@ -363,21 +363,21 @@ POTENZA.searchbox = function () {
         });
       });
     }
- }
+  }
 
-/*************************
-    Pricing Tabs
-*************************/
-POTENZA.pricingtabs = function () {
-    jQuery('.pricing-tab-switcher').on('click', function() {
+  /*************************
+      Pricing Tabs
+  *************************/
+  POTENZA.pricingtabs = function () {
+    jQuery('.pricing-tab-switcher').on('click', function () {
       jQuery(this).toggleClass('active');
       jQuery('.pricing-price').toggleClass('change-pricing-price');
     });
   }
 
-/*************************
-     Back to top
-*************************/
+  /*************************
+       Back to top
+  *************************/
   POTENZA.goToTop = function () {
     var $goToTop = $('#back-to-top');
     $goToTop.hide();
@@ -394,9 +394,9 @@ POTENZA.pricingtabs = function () {
   }
 
 
-/****************************************************
-     POTENZA Window load and functions
-****************************************************/
+  /****************************************************
+       POTENZA Window load and functions
+  ****************************************************/
 
   //Window load functions
   $window.on("load", function () {
@@ -406,19 +406,19 @@ POTENZA.pricingtabs = function () {
   //Document ready functions
   $document.ready(function () {
     POTENZA.isSticky(),
-    POTENZA.secondarySticky(),
-    POTENZA.counters(),
-    POTENZA.dropdownmenu(),
-    POTENZA.goToTop(),
-    POTENZA.countdownTimer(),
-    POTENZA.mediaPopups(),
-    POTENZA.pricingtabs(),
-    POTENZA.Tooltip(),
-    POTENZA.Popover(),
-    POTENZA.carousel(),
-    POTENZA.swiperAnimation(),
-    POTENZA.searchbox(),
-    POTENZA.typer();
+      POTENZA.secondarySticky(),
+      POTENZA.counters(),
+      POTENZA.dropdownmenu(),
+      POTENZA.goToTop(),
+      POTENZA.countdownTimer(),
+      POTENZA.mediaPopups(),
+      POTENZA.pricingtabs(),
+      POTENZA.Tooltip(),
+      POTENZA.Popover(),
+      POTENZA.carousel(),
+      POTENZA.swiperAnimation(),
+      POTENZA.searchbox(),
+      POTENZA.typer();
   });
 
 })(jQuery);
